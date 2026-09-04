@@ -1,0 +1,1086 @@
+/* =========================================================
+   THE TORTURED DEVS DEPT.
+   Shared stylesheet
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+    --paper: #e9e4d9;
+    --paper-light: #f1ede4;
+    --paper-dark: #d8d1c4;
+
+    --ink: #171514;
+    --muted: #68615a;
+    --faded: #91887e;
+
+    --red: #711c22;
+    --red-dark: #4c1217;
+
+    --border: rgba(23, 21, 20, 0.35);
+
+    --serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
+    --mono: "Courier Prime", "Courier New", monospace;
+
+    --page-width: 1280px;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255,255,255,0.16),
+            transparent 65%
+        ),
+        var(--paper);
+
+    color: var(--ink);
+    font-family: var(--serif);
+    line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+
+/* Paper grain */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+
+    opacity: 0.12;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+
+    mix-blend-mode: multiply;
+}
+
+::selection {
+    background: var(--red);
+    color: var(--paper);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 22px 5vw;
+
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(233, 228, 217, 0.94);
+
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+    opacity: 0.55;
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.site-nav a {
+    position: relative;
+
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: var(--muted);
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+    color: var(--ink);
+}
+
+.site-nav a.active::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+
+    height: 1px;
+
+    background: var(--red);
+}
+
+.menu-toggle {
+    display: none;
+
+    border: 0;
+    background: none;
+
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+main {
+    width: min(var(--page-width), 90%);
+    margin: auto;
+}
+
+.eyebrow {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.page-header {
+    position: relative;
+
+    padding: 150px 0 100px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.page-header::after {
+    content: "T.T.D.D.";
+
+    position: absolute;
+    right: 0;
+    bottom: 35px;
+
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+
+    color: var(--faded);
+}
+
+.page-header h1 {
+    max-width: 900px;
+
+    margin-top: 20px;
+
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+
+    font-weight: 400;
+}
+
+.page-header > p:last-child {
+    max-width: 570px;
+    margin-top: 35px;
+
+    font-size: 1.05rem;
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 100px 0;
+
+    position: relative;
+}
+
+.hero::before {
+    content: "TORTURED DEV. DEPARTMENT";
+
+    position: absolute;
+    top: 60px;
+    right: 0;
+
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+
+    color: var(--faded);
+}
+
+.hero h1 {
+    margin: 25px 0 35px;
+
+    max-width: 1000px;
+
+    font-size: clamp(4.8rem, 13vw, 12rem);
+    line-height: 0.78;
+    letter-spacing: -0.085em;
+
+    font-weight: 400;
+}
+
+.hero h1 br + * {
+    color: var(--red);
+}
+
+.hero-description {
+    max-width: 550px;
+
+    margin-bottom: 40px;
+
+    font-size: 1.1rem;
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.button {
+    width: fit-content;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 20px;
+
+    border: 1px solid var(--ink);
+
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.button:hover {
+    background: var(--ink);
+    color: var(--paper);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   CASE FILE
+   ========================================================= */
+
+.case-file {
+    position: relative;
+
+    min-height: 520px;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    padding: 60px;
+
+    border: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.2),
+            transparent
+        ),
+        var(--paper-light);
+
+    transform: rotate(-0.25deg);
+}
+
+.case-file::before {
+    content: "PROPERTY OF THE DEPARTMENT";
+
+    position: absolute;
+    top: 20px;
+    right: 25px;
+
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+
+    color: var(--faded);
+}
+
+.stamp {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border: 2px solid var(--red);
+
+    color: var(--red);
+
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+
+    transform: rotate(-3deg);
+}
+
+.case-number {
+    margin-top: 18px;
+
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+}
+
+.case-content {
+    align-self: center;
+}
+
+.case-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+}
+
+.case-content h2 {
+    margin-top: 15px;
+
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    line-height: 0.82;
+    letter-spacing: -0.06em;
+    font-weight: 400;
+}
+
+.handwritten {
+    font-family: "Comic Sans MS", "Bradley Hand", cursive;
+    font-style: italic;
+    color: var(--red);
+
+    transform: rotate(-5deg);
+}
+
+.case-file > .handwritten {
+    position: absolute;
+    bottom: 55px;
+    left: 60px;
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   STATEMENT
+   ========================================================= */
+
+.statement {
+    padding: 180px 0;
+
+    max-width: 1000px;
+}
+
+.statement h2 {
+    margin-top: 35px;
+
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+    font-weight: 400;
+}
+
+.signature {
+    margin-top: 40px;
+
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--red);
+}
+
+
+/* =========================================================
+   JOURNAL
+   ========================================================= */
+
+.journal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    padding: 100px 0;
+}
+
+.journal-card {
+    position: relative;
+
+    min-height: 420px;
+
+    padding: 45px;
+
+    border-bottom: 1px solid var(--border);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.journal-card:nth-child(odd) {
+    border-right: 1px solid var(--border);
+}
+
+.journal-card:hover {
+    background: rgba(255,255,255,0.18);
+}
+
+.entry-number {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--red);
+    letter-spacing: 0.12em;
+}
+
+.entry-date {
+    margin-top: 8px;
+
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--faded);
+}
+
+.journal-card h2 {
+    margin: 70px 0 25px;
+
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+}
+
+.journal-card p:not(.entry-date) {
+    max-width: 480px;
+
+    color: var(--muted);
+}
+
+.text-link {
+    display: inline-block;
+
+    margin-top: 35px;
+
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+
+    border-bottom: 1px solid var(--ink);
+}
+
+
+/* =========================================================
+   WORKS / PROJECTS
+   ========================================================= */
+
+.projects {
+    padding: 100px 0;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: 100px 1fr 150px;
+
+    gap: 50px;
+
+    padding: 65px 0;
+
+    border-top: 1px solid var(--border);
+
+    transition: padding 0.3s ease;
+}
+
+.project:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.project:hover {
+    padding-left: 20px;
+}
+
+.project-number {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--red);
+}
+
+.project-info h2 {
+    margin: 12px 0 20px;
+
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+    font-weight: 400;
+}
+
+.project-info > p:not(.eyebrow) {
+    max-width: 650px;
+
+    color: var(--muted);
+}
+
+.project-status {
+    align-self: start;
+
+    padding-top: 5px;
+
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+
+    color: var(--red);
+
+    text-align: right;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 25px;
+}
+
+.tags span {
+    padding: 5px 9px;
+
+    border: 1px solid var(--border);
+
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+}
+
+.classified h2 {
+    letter-spacing: 0.02em;
+}
+
+
+/* =========================================================
+   PERSONNEL FILE
+   ========================================================= */
+
+.personnel-file {
+    position: relative;
+
+    margin: 100px auto;
+
+    max-width: 1050px;
+
+    padding: 35px;
+
+    border: 1px solid var(--border);
+
+    background: var(--paper-light);
+
+    box-shadow:
+        12px 12px 0 rgba(23,21,20,0.08);
+
+    transform: rotate(0.3deg);
+}
+
+.file-heading {
+    display: flex;
+    justify-content: space-between;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--border);
+
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+}
+
+.personnel-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+
+    gap: 60px;
+
+    padding: 55px 20px;
+}
+
+.profile-placeholder {
+    aspect-ratio: 3 / 4;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid var(--border);
+
+    background: var(--paper-dark);
+
+    font-family: var(--mono);
+    color: var(--muted);
+
+    position: relative;
+}
+
+.profile-placeholder::before,
+.profile-placeholder::after {
+    content: "";
+
+    position: absolute;
+
+    border: 1px solid var(--border);
+
+    width: 80%;
+    height: 80%;
+}
+
+.profile-placeholder::before {
+    transform: rotate(4deg);
+}
+
+.profile-placeholder::after {
+    transform: rotate(-3deg);
+}
+
+.profile-placeholder span,
+.profile-placeholder small {
+    position: relative;
+    z-index: 2;
+}
+
+.profile-placeholder span {
+    font-size: 1rem;
+}
+
+.profile-placeholder small {
+    margin-top: 8px;
+    font-size: 0.55rem;
+}
+
+.personnel-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+
+    gap: 25px;
+
+    padding: 18px 0;
+
+    border-bottom: 1px dotted var(--border);
+}
+
+.detail span {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+}
+
+.detail strong {
+    font-weight: 400;
+}
+
+.status-active {
+    color: var(--red);
+}
+
+.personnel-note {
+    padding-top: 25px;
+
+    border-top: 1px solid var(--border);
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   CORRESPONDENCE
+   ========================================================= */
+
+.correspondence {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+
+    gap: 100px;
+
+    padding: 120px 0;
+}
+
+.correspondence-intro h2 {
+    margin: 30px 0;
+
+    font-size: clamp(3rem, 6vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    font-weight: 400;
+}
+
+.correspondence-intro > p:last-child {
+    max-width: 450px;
+
+    color: var(--muted);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.contact-form label {
+    margin-top: 15px;
+
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+
+    padding: 16px 0;
+
+    border: 0;
+    border-bottom: 1px solid var(--border);
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--ink);
+
+    font-family: var(--serif);
+    font-size: 1rem;
+
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--red);
+}
+
+.contact-form textarea {
+    min-height: 180px;
+}
+
+.contact-form .button {
+    margin-top: 25px;
+}
+
+.form-message {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--red);
+
+    min-height: 20px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+    width: 90%;
+    max-width: var(--page-width);
+
+    margin: 100px auto 0;
+    padding: 25px 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 80px;
+
+    border-top: 1px solid var(--border);
+
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+
+    color: var(--muted);
+}
+
+.site-footer span:nth-child(2) {
+    text-align: center;
+}
+
+.site-footer span:last-child {
+    text-align: right;
+}
+
+
+/* =========================================================
+   PAGE TRANSITION
+   ========================================================= */
+
+body {
+    animation: pageIn 0.45s ease both;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .site-header {
+        padding: 18px 5%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .site-nav {
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 25px 5%;
+
+        border-bottom: 1px solid var(--border);
+
+        background: var(--paper);
+
+        gap: 22px;
+    }
+
+    .site-nav.open {
+        display: flex;
+    }
+
+    .site-nav a.active::after {
+        display: none;
+    }
+
+    .hero {
+        min-height: calc(100vh - 65px);
+    }
+
+    .hero h1 {
+        font-size: clamp(4rem, 17vw, 8rem);
+    }
+
+    .case-file {
+        grid-template-columns: 1fr;
+
+        padding: 40px;
+
+        min-height: 600px;
+    }
+
+    .case-content {
+        margin-top: 80px;
+    }
+
+    .journal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .journal-card:nth-child(odd) {
+        border-right: 0;
+    }
+
+    .journal-card {
+        min-height: auto;
+        padding: 50px 0;
+    }
+
+    .project {
+        grid-template-columns: 60px 1fr;
+        gap: 25px;
+    }
+
+    .project-status {
+        grid-column: 2;
+        text-align: left;
+    }
+
+    .personnel-grid {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .profile-placeholder {
+        max-width: 280px;
+    }
+
+    .correspondence {
+        grid-template-columns: 1fr;
+
+        gap: 70px;
+    }
+
+    .site-footer {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .site-footer span:nth-child(2),
+    .site-footer span:last-child {
+        text-align: left;
+    }
+}
+
+
+@media (max-width: 520px) {
+
+    .page-header {
+        padding: 100px 0 70px;
+    }
+
+    .page-header h1 {
+        font-size: 4rem;
+    }
+
+    .hero h1 {
+        font-size: 4.2rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .case-file {
+        padding: 30px;
+
+        min-height: 520px;
+    }
+
+    .case-content h2 {
+        font-size: 3.5rem;
+    }
+
+    .statement {
+        padding: 100px 0;
+    }
+
+    .statement h2 {
+        font-size: 2.6rem;
+    }
+
+    .project {
+        grid-template-columns: 1fr;
+    }
+
+    .project-status {
+        grid-column: auto;
+    }
+
+    .personnel-file {
+        padding: 20px;
+    }
+
+    .personnel-grid {
+        padding: 40px 0;
+    }
+
+    .detail {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .correspondence {
+        padding: 80px 0;
+    }
+}

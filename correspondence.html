@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correspondence — The Tortured Devs Dept.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <a href="index.html" class="logo">THE TORTURED DEVS DEPT.</a>
+
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+    <nav class="site-nav">
+        <a href="index.html">The Department</a>
+        <a href="journal.html">The Journal</a>
+        <a href="works.html">The Works</a>
+        <a href="personnel.html">Personnel File</a>
+        <a href="correspondence.html" class="active">Correspondence</a>
+    </nav>
+</header>
+
+<main>
+
+    <section class="page-header">
+        <p class="eyebrow">COMMUNICATIONS OFFICE · INCOMING TRANSMISSIONS</p>
+        <h1>Correspondence</h1>
+        <p>
+            Have a message for the department?
+            Please submit it below.
+        </p>
+    </section>
+
+
+    <section class="correspondence">
+
+        <div class="correspondence-intro">
+            <p class="stamp">OFFICIAL CHANNEL</p>
+
+            <h2>
+                Send a message<br>
+                to the department.
+            </h2>
+
+            <p>
+                Questions, project inquiries, compliments,
+                complaints, or evidence of a bug may be submitted here.
+            </p>
+        </div>
+
+
+        <form id="contact-form" class="contact-form">
+
+            <label for="name">
+                YOUR NAME
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                required
+            >
+
+
+            <label for="message">
+                YOUR MESSAGE
+            </label>
+
+            <textarea
+                id="message"
+                name="message"
+                rows="8"
+                placeholder="Write your correspondence..."
+                required
+            ></textarea>
+
+
+            <button type="submit" class="button">
+                SEND CORRESPONDENCE ↗
+            </button>
+
+            <p id="form-message" class="form-message"></p>
+
+        </form>
+
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <span>THE TORTURED DEVS DEPT.</span>
+    <span>All rights reserved. None of the bugs are.</span>
+    <span>© <span id="year"></span></span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
