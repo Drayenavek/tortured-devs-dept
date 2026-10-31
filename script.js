@@ -184,19 +184,18 @@ if (imageViewer && videoViewer) {
 
 
             if (card.dataset.type === "video") {
-                const videoSource = card.dataset.video;
+                const videoId = card.dataset.videoId;
 
-                if (!videoSource || !viewerVideo) return;
+                if (!videoId || !viewerVideo) return;
 
-                viewerVideo.src = videoSource;
+                viewerVideo.src =
+                    `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
 
                 if (videoCaption) {
                     videoCaption.textContent = caption;
                 }
 
                 videoViewer.showModal();
-
-                viewerVideo.play().catch(() => {});
             }
         });
     });
@@ -268,9 +267,7 @@ if (imageViewer && videoViewer) {
 
 
     videoViewer.addEventListener("close", () => {
-        viewerVideo.pause();
         viewerVideo.removeAttribute("src");
-        viewerVideo.load();
     });
 
 
