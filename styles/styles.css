@@ -602,9 +602,12 @@ a {
 
 .viewerVideo {
     display: block;
+    flex-shrink: 0;
     width: 75%;
+    height: auto;
     max-height: 80vh;
-    object-fit: contain;
+    aspect-ratio: 16 / 9;
+    border: 0;
 }
 
 .viewerSide {
