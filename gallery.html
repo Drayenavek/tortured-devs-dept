@@ -37,14 +37,9 @@
 
             <button class="galleryCard landscape" type="button"
                 data-type="video"
-                data-video="videos/vid1.mp4">
+                data-video-id="vAM9sGTKgOc">
 
-                <video
-                    src="videos/vid1.mp4"
-                    poster="images/vid1Thumbnail.png"
-                    muted
-                    preload="metadata">
-                </video>
+                <img src="images/vid1Thumbnail.png" alt="Video 1 thumbnail">
 
                 <span>The Things That Burn When No One Is Watching</span>
                 <span class="playIcon" aria-hidden="true">▶</span>
@@ -71,14 +66,9 @@
 
             <button class="galleryCard landscape" type="button"
                 data-type="video"
-                data-video="videos/vid2.mp4">
+                data-video-id="2HufLmQmGqs">
 
-                <video
-                    src="videos/vid2.mp4"
-                    poster="images/vid2Thumbnail.png"
-                    muted
-                    preload="metadata">
-                </video>
+                <img src="images/vid2Thumbnail.png" alt="Video 2 thumbnail">
 
                 <span>A Soundtrack for the Things We Couldn't Say. Yearn with Apple Music</span>
                 <span class="playIcon" aria-hidden="true">▶</span>
@@ -133,7 +123,7 @@
 
         <div class="videoViewerContent">
 
-            <video class="viewerVideo" controls playsinline></video>
+            <iframe class="viewerVideo" title="Gallery video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
             <div class="viewerSide">
                 <button class="viewerClose" type="button" aria-label="Close video">&times;</button>
