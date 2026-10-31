@@ -122,7 +122,9 @@ if (imageViewer && videoViewer) {
 
             if (!width || !height) return;
 
-            card.classList.toggle("landscape", width > height);
+            if (width > height) {
+                card.classList.add("landscape");
+            }
         }
 
         if (media.tagName === "VIDEO") {
