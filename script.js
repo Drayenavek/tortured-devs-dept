@@ -7,6 +7,7 @@ if (menuToggle && nav) {
     });
 }
 
+
 document.querySelectorAll(".imageCarousel").forEach(carousel => {
     const track = carousel.querySelector(".carouselTrack");
     const images = track ? track.querySelectorAll("img") : [];
@@ -55,11 +56,13 @@ document.querySelectorAll(".imageCarousel").forEach(carousel => {
     updateCarousel();
 });
 
+
 const galleryCards = document.querySelectorAll(".galleryCard");
 const imageViewer = document.querySelector(".imageViewer");
 const videoViewer = document.querySelector(".videoViewer");
 
 if (imageViewer && videoViewer) {
+
     const viewerImage = imageViewer.querySelector(".viewerImage");
     const imageCaption = imageViewer.querySelector(".viewerCaption");
     const imageClose = imageViewer.querySelector(".viewerClose");
@@ -74,36 +77,51 @@ if (imageViewer && videoViewer) {
     let currentImages = [];
     let currentIndex = 0;
 
+
     function updateImageViewer() {
         const currentImage = currentImages[currentIndex];
 
-        viewerImage.src = currentImage.src;
-        viewerImage.alt = currentImage.alt;
+        if (!currentImage || !viewerImage) return;
+
+        viewerImage.src = currentImage.currentSrc || currentImage.src;
+        viewerImage.alt = currentImage.alt || "";
 
         if (viewerCounter) {
-            viewerCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+            viewerCounter.textContent =
+                `${currentIndex + 1} / ${currentImages.length}`;
+
+            viewerCounter.style.display =
+                currentImages.length > 1 ? "block" : "none";
         }
 
         if (viewerPrev) {
             viewerPrev.disabled = currentIndex === 0;
+            viewerPrev.style.display =
+                currentImages.length > 1 ? "block" : "none";
         }
 
         if (viewerNext) {
-            viewerNext.disabled = currentIndex === currentImages.length - 1;
-        }
+            viewerNext.disabled =
+                currentIndex === currentImages.length - 1;
 
-        if (viewerPrev) {
-            viewerPrev.style.display = currentImages.length > 1 ? "block" : "none";
-        }
-
-        if (viewerNext) {
-            viewerNext.style.display = currentImages.length > 1 ? "block" : "none";
-        }
-
-        if (viewerCounter) {
-            viewerCounter.style.display = currentImages.length > 1 ? "block" : "none";
+            viewerNext.style.display =
+                currentImages.length > 1 ? "block" : "none";
         }
     }
+
+
+    function openImageViewer(images, caption) {
+        currentImages = images;
+        currentIndex = 0;
+
+        if (imageCaption) {
+            imageCaption.textContent = caption;
+        }
+
+        updateImageViewer();
+        imageViewer.showModal();
+    }
+
 
     galleryCards.forEach(card => {
         const media = card.querySelector("img, video");
@@ -122,9 +140,7 @@ if (imageViewer && videoViewer) {
 
             if (!width || !height) return;
 
-            if (width > height) {
-                card.classList.add("landscape");
-            }
+            card.classList.toggle("landscape", width > height);
         }
 
         if (media.tagName === "VIDEO") {
@@ -133,11 +149,14 @@ if (imageViewer && videoViewer) {
             if (media.readyState >= 1) {
                 checkOrientation();
             }
+
         } else if (media.complete) {
             checkOrientation();
+
         } else {
             media.addEventListener("load", checkOrientation);
         }
+
 
         card.addEventListener("click", () => {
             const caption = captionElement
@@ -145,32 +164,35 @@ if (imageViewer && videoViewer) {
                 : "";
 
             if (card.dataset.type === "image") {
-                currentImages = [media];
-                currentIndex = 0;
+                const image = card.querySelector("img");
 
-                imageCaption.textContent = caption;
-                updateImageViewer();
+                if (!image) return;
 
-                imageViewer.showModal();
+                openImageViewer([image], caption);
             }
+
 
             if (card.dataset.type === "carousel") {
-                currentImages = Array.from(card.querySelectorAll("img"));
-                currentIndex = 0;
+                const images = Array.from(
+                    card.querySelectorAll("img")
+                ).filter(image => image.getAttribute("src"));
 
-                imageCaption.textContent = caption;
-                updateImageViewer();
+                if (images.length === 0) return;
 
-                imageViewer.showModal();
+                openImageViewer(images, caption);
             }
+
 
             if (card.dataset.type === "video") {
                 const videoSource = card.dataset.video;
 
-                if (!videoSource) return;
+                if (!videoSource || !viewerVideo) return;
 
                 viewerVideo.src = videoSource;
-                videoCaption.textContent = caption;
+
+                if (videoCaption) {
+                    videoCaption.textContent = caption;
+                }
 
                 videoViewer.showModal();
 
@@ -179,7 +201,10 @@ if (imageViewer && videoViewer) {
         });
     });
 
-    const requestedImage = new URLSearchParams(window.location.search).get("image");
+
+    const requestedImage = new URLSearchParams(
+        window.location.search
+    ).get("image");
 
     if (requestedImage) {
         const matchingCard = Array.from(galleryCards).find(card => {
@@ -195,6 +220,7 @@ if (imageViewer && videoViewer) {
         }
     }
 
+
     if (viewerPrev) {
         viewerPrev.addEventListener("click", () => {
             if (currentIndex > 0) {
@@ -204,6 +230,7 @@ if (imageViewer && videoViewer) {
         });
     }
 
+
     if (viewerNext) {
         viewerNext.addEventListener("click", () => {
             if (currentIndex < currentImages.length - 1) {
@@ -212,6 +239,7 @@ if (imageViewer && videoViewer) {
             }
         });
     }
+
 
     if (imageClose) {
         imageClose.addEventListener("click", () => {
@@ -225,6 +253,7 @@ if (imageViewer && videoViewer) {
         }
     });
 
+
     if (videoClose) {
         videoClose.addEventListener("click", () => {
             videoViewer.close();
@@ -237,14 +266,20 @@ if (imageViewer && videoViewer) {
         }
     });
 
+
     videoViewer.addEventListener("close", () => {
         viewerVideo.pause();
         viewerVideo.removeAttribute("src");
         viewerVideo.load();
     });
 
+
     imageViewer.addEventListener("close", () => {
-        viewerImage.removeAttribute("src");
+        if (viewerImage) {
+            viewerImage.removeAttribute("src");
+            viewerImage.alt = "";
+        }
+
         currentImages = [];
         currentIndex = 0;
     });

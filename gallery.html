@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cormorant+Garamond:wght@400;500&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
     <div class="siteHeader">
@@ -26,6 +28,7 @@
     </div>
 
     <main>
+
         <div class="galleryHeader">
             <h1>THE WORKS</h1>
         </div>
@@ -44,7 +47,7 @@
                 </video>
 
                 <span>The Things That Burn When No One Is Watching</span>
-                <div class="playIcon">▶</div>
+                <span class="playIcon" aria-hidden="true">▶</span>
 
             </button>
 
@@ -78,7 +81,7 @@
                 </video>
 
                 <span>A Soundtrack for the Things We Couldn't Say. Yearn with Apple Music</span>
-                <div class="playIcon">▶</div>
+                <span class="playIcon" aria-hidden="true">▶</span>
 
             </button>
 
@@ -102,14 +105,16 @@
             </button>
 
         </div>
+
     </main>
 
     <dialog class="imageViewer">
+
         <div class="viewerContent">
 
             <button class="viewerPrev" type="button" aria-label="Previous image">‹</button>
 
-            <img class="viewerImage" src="" alt="">
+            <img class="viewerImage" src="images/pic1.png" alt="Selected gallery image">
 
             <button class="viewerNext" type="button" aria-label="Next image">›</button>
 
@@ -121,9 +126,11 @@
             </div>
 
         </div>
+
     </dialog>
 
     <dialog class="videoViewer">
+
         <div class="videoViewerContent">
 
             <video class="viewerVideo" controls playsinline></video>
@@ -135,6 +142,7 @@
             </div>
 
         </div>
+
     </dialog>
 
     <script src="script.js"></script>
