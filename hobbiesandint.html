@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tortured Devs Department</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="siteHeader">
+    
+        <a href="index.html" class="logo">The Tortured Devs Department</a>
+        <button class="menuToggle" aria-label="Toggle menu">☰</button>
+        <nav id="nav">
+            <a href="index.html">the department</a>
+            <a href="hobbiesandint.html" class="active">the journal</a>
+            <a href="gallery.html">the works</a>
+            <a href="about.html">personnel file</a>
+        </nav>
+    </div>
+    <main>
+        <div class="journalSelection">
+            <div class="journalEntry">
+                <div class="spotifyEmbed">
+                    <iframe data-testid="embed-iframe"
+                    style="border-radius:12px"
+                    src="https://open.spotify.com/embed/playlist/2UO0IVPFY34RZie0UR5kw1?utm_source=generator&si=5070b3c070aa4804"
+                    frameBorder="0"
+                    allowfullscreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy">
+                    </iframe>
+                </div>
+                <div class="journalText">
+                    <h1>THE SOUNDTRACK</h1>
+                    <p>
+                        Music has always been more than just something playing in the background. 
+                        It's an escape, a source of comfort, and sometimes the perfect companion to 
+                        whatever the day brings. From songs that linger long after they've ended to 
+                        artists whose work becomes part of my everyday routine, this is a collection 
+                        of the sounds that stay with me. Whether it's something to get lost in, 
+                        something to relate to, or simply something to have on repeat, every track 
+                        has its own place in the soundtrack. Some songs bring back memories, others 
+                        put feelings into words I couldn't quite find myself. Regardless of the reason, 
+                        there's always something worth coming back to, one song at a time.
+                    </p>
+                </div>
+            </div>  
+            <div class="journalEntry">
+                <div class="journalText">
+                    <h1>THE DISTRACTION</h1>
+                    <p>
+                        Some days call for a different kind of escape, and that's where games come in.
+                        Whether it's exploring unfamiliar worlds, getting caught up in competitive
+                        matches, or simply spending time playing with friends, gaming has become one
+                        of my favorite ways to unwind. I'm not particularly concerned with being the
+                        best or climbing every leaderboard. It's more about the experience, the
+                        occasional chaos, the unexpected moments, and the memories made along the
+                        way. From frustrating losses to victories that feel far more rewarding than
+                        they should, every match has a story of its own. At the end of the day, it's
+                        less about the rank and more about having a good time.
+                    </p>
+                </div>
+                    <div class="imageCarousel">
+                        <div class="carouselTrack">
+                            <img src="images/gameCarousel1.png" alt="Gaming screenshot">
+                            <img src="images/gameCarousel2.png" alt="Gaming screenshot">
+                            <img src="images/gameCarousel3.png" alt="Gaming screenshot">
+                        </div>
+                        <button class="carouselPrev" aria-label="Previous image">&#10094;</button>
+                        <button class="carouselNext" aria-label="Next image">&#10095;</button>
+                        <div class="carouselCounter">
+                            <span class="currentSlide">01</span> / 03
+                        </div>
+                    </div>
+            </div>
+            <section class="journalEntry film">
+                <div class="imageCarousel">
+                    <div class="carouselTrack">
+                        <img src="images/film1.jpg" alt="Film screenshot 1">
+                        <img src="images/film2.jpg" alt="Film screenshot 2">
+                        <img src="images/film3.jpg" alt="Film screenshot 3">
+                    </div>
+                    <button class="carouselPrev" aria-label="Previous image">&#10094;</button>
+                    <button class="carouselNext" aria-label="Next image">&#10095;</button>
+                    <div class="carouselCounter">
+                        <span class="currentSlide">01</span> / 03
+                    </div>
+                </div>
+                <div class="journalText">
+                    <h2>THE ESCAPE</h2>
+                    <p>
+                        There's something fascinating about being immersed in a story that exists 
+                        entirely outside your own reality. Movies and television offer a chance to 
+                        experience different perspectives, explore unfamiliar worlds, and follow 
+                        characters through lives far removed from my own. I'm drawn to stories with 
+                        compelling narratives, imaginative settings, and worlds that make you wish 
+                        you could stay a little longer. Sometimes, all it takes is a good film or 
+                        a few episodes of a series to forget about everything else for a while.
+                    </p>
+                </div>
+            </section>
+        </div> 
+    </main>
+</body>
+<script src="script.js"></script>
+</html>

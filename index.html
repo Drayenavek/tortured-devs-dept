@@ -1,85 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Department — The Tortured Devs Dept.</title>
-    <link rel="stylesheet" href="style.css">
+    <title>The Tortured Devs Department</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-<header class="site-header">
-    <a href="index.html" class="logo">THE TORTURED DEVS DEPT.</a>
-
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-
-    <nav class="site-nav">
-        <a href="index.html" class="active">The Department</a>
-        <a href="journal.html">The Journal</a>
-        <a href="works.html">The Works</a>
-        <a href="personnel.html">Personnel File</a>
-        <a href="correspondence.html">Correspondence</a>
-    </nav>
-</header>
-
-<main>
-
-    <section class="hero">
-        <p class="eyebrow">EST. 2026 · DEPARTMENT OF QUESTIONABLE DECISIONS</p>
-
-        <h1>
-            The Tortured<br>
-            Devs Dept.
-        </h1>
-
-        <p class="hero-description">
-            A small digital department for code, experiments,
-            unfinished thoughts, and the occasional project
-            that somehow works.
-        </p>
+    <div class="siteHeader">
     
-        <a href="works.html" class="button">
-            ENTER THE DEPARTMENT ↘
-        </a>
-    </section>
-
-
-    <section class="case-file">
-        <div>
-            <p class="stamp">CONFIDENTIAL</p>
-            <p class="case-number">CASE NO. 0001</p>
+        <a href="index.html" class="logo">The Tortured Devs Department</a>
+        <button class="menuToggle" aria-label="Toggle menu">☰</button>
+        <nav id="nav">
+            <a href="index.html" class="active">the department</a>
+            <a href="hobbiesandint.html">the journal</a>
+            <a href="gallery.html">the works</a>
+            <a href="about.html">personnel file</a>
+        </nav>
+    </div>
+    <main>
+        <div class="banner">
+            <img src="images/hero.png" class="bannerImage" alt="banner">
+            <div class="bannerText">
+                <h1>The Tortured Devs Dept.</h1>
+                <p> A collection of thoughts, interests, and things that make me who I am. 
+                    From creative pursuits and ongoing projects to fleeting obsessions and 
+                    everyday curiosities, this is where I document the things that catch my 
+                    attention, inspire me, and keep me creating. Consider this a glimpse 
+                    into the mind behind the department.
+                </p>
+            </div>
         </div>
+        <div class="content">
+            <div class="contentHeadJourn">
+                <h2>The Journal</h2>
+                <p>Enter the journal to view more</p>
+                <button><a href="hobbiesandint.html">View Journal</a></button>
+            </div>
+            
+            <div class="journPreview">
+                <div class="contentPrevJourn"><a href="hobbiesandint.html">
+                    <img src="images/musicIcon.png" alt="preview">
+                        <p>
+                            Music has always been more than just something playing in the background. 
+                            It's an escape, a source of comfort, and sometimes the perfect companion to 
+                            whatever the day brings. From songs...
+                        </p>
+                        </a>
+                </div>
+                <div class="contentPrevJourn"><a href="hobbiesandint.html">
+                    <img src="images/gameIcon.png" alt="preview">
+                        <p>
+                            Some days call for a different kind of escape, and that's where games come in.
+                            Whether it's exploring unfamiliar worlds, getting caught...
+                        </p>
+                        </a>
+                </div>
+                <div class="contentPrevJourn"><a href="hobbiesandint.html">
+                    <img src="images/filmIcon.png" alt="preview">
+                        <p>
+                            There's something fascinating about being immersed in a story that exists 
+                            entirely outside your own reality. Movies and television...
+                        </p>
+                        </a>
+                </div>
+            </div>
 
-        <div class="case-content">
-            <p class="case-label">CURRENT STATUS</p>
-            <h2>Currently<br>Under<br>Construction</h2>
+            <div class="contentHeadGallery">
+                <h2>The Works</h2>
+                <p>Enter the gallery to view more</p>
+                <button><a href="gallery.html">View Gallery</a></button>
+            </div>
+            <div class="galleryPrev">
+                <a href="gallery.html?image=pic1.png" class="contentPrevGallery">
+                    <img src="images/pic1.png" alt="Gallery preview 1">
+                </a>
+
+                <a href="gallery.html?image=pic2.png" class="contentPrevGallery">
+                    <img src="images/pic2.png" alt="Gallery preview 2">
+                </a>
+
+                <a href="gallery.html?image=pic3.png" class="contentPrevGallery">
+                    <img src="images/pic3.png" alt="Gallery preview 3">
+                </a>
+            </div>
         </div>
-
-        <p class="handwritten">it works on my machine</p>
-    </section>
-
-
-    <section class="statement">
-        <p class="eyebrow">OFFICIAL DEPARTMENT STATEMENT</p>
-
-        <h2>
-            We are all just trying to turn questionable
-            ideas into questionable software.
-        </h2>
-
-        <p class="signature">— THE DEPARTMENT</p>
-    </section>
-
-</main>
-
-<footer class="site-footer">
-    <span>THE TORTURED DEVS DEPT.</span>
-    <span>All rights reserved. None of the bugs are.</span>
-    <span>© <span id="year"></span></span>
-</footer>
-
-<script src="script.js"></script>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
